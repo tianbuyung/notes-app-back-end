@@ -24,6 +24,7 @@ const addNoteHandler = (request, h) => {
         noteId: id,
       },
     });
+    // response.header('Access-Control-Allow-Origin', 'http://notesapp-v1.dicodingacademy.com');
     response.code(201);
     return response;
   }
@@ -31,11 +32,19 @@ const addNoteHandler = (request, h) => {
     status: 'fail',
     message: 'Catatan gagal ditambahkan',
   });
+  // response.header('Access-Control-Allow-Origin', 'http://notesapp-v1.dicodingacademy.com'); // response.header('Access-Control-Allow-Origin', '*');
   response.code(500);
   return response;
 };
 
-module.exports = { addNoteHandler };
+const getAllNotesHandler = () => ({
+  status: 'success',
+  data: {
+    notes,
+  },
+});
+
+module.exports = { addNoteHandler, getAllNotesHandler };
 
 // {
 //  id: string,
